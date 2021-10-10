@@ -1,10 +1,114 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-      
+        <title>Dwayne's First Website</title>
+
+        <style>
+            body {
+                background: rgb(158, 233, 240);
+                color: rgb(255, 255, 255);
+                padding: 10px;
+                font-family: arial;
+            }
+            #all-contents {
+                max-width: 800px;
+                margin: auto;
+            }
+        
+            /* navigation menu */
+            nav {
+                border-radius: 10px 100px / 120px;
+                background: rgb(73, 146, 214);
+                margin: 0 auto;
+                margin-bottom: 20px;
+                display: flex;
+                padding: 10px;
+            }
+            nav h1 {
+                display: flex;
+                align-items: center;
+                color: white;
+                flex: 1;
+                margin: 0;
+            }
+            nav ul {
+                list-style-image: none;
+            }
+            nav li {
+                display: inline-block;
+                padding: 0 10px;
+            }
+            nav a {
+                text-decoration: none;
+                color: #fff;
+            }
+        
+            /* main container area beneath menu */
+            main {
+                border-radius: 30px;
+                background: rgb(240, 227, 194);
+                display: flex;
+            }
+            .sidebar {
+                margin-right: 25px;
+                padding: 10px;
+            }
+            .sidebar img {
+                width: 200px;
+            }
+            .content {
+                flex: 1;
+                padding: 15px;
+            }
+            h2, h3 {
+                margin: 0px;
+            }
+        </style>
+
     </head>
     
     <body>
-      
+        <div id="all-contents">
+            <nav>
+                <h1>Dwayne's Chill Spot</h1>
+                <ul>
+                    <li>
+                        <a href="index.html"> Home </a>
+                    </li>
+                    <li>
+                        <a href="portfolio.html"> Portfolio </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <main>
+                <div class="sidebar">
+                    <img src="https://avatars.githubusercontent.com/u/58319845?v=4">
+                        <style>
+                            img {
+                                border: dotted 15px rgb(73, 146, 214); 
+                                background: rgb(158, 233, 240);
+                                border-radius: 10px 40px;
+                                border-width: 10px 4px;
+                            }
+                        </style>
+                </div>
+                
+                <div class="content">
+                    <h2>Dwayne Ballard</h2>
+                    
+                    <p>Whole Foods Team Member</p>
+
+                    <div class="interests">
+                        <h3>Interests</h3>
+                        <ul>
+                            <li>Gaming</li>
+                            <li>Bike Riding</li>
+                            <li>Traveling</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </div>
     </body>
 </html>
