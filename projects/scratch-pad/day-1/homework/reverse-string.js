@@ -21,13 +21,15 @@
 
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
-    var newString = "";
+    var newString = ""; // this is where the outputs will return for the newly reversed string
+
+    // a for loop will help us continuously run inputs once i (length of the input) reaches 0
     for (var i = input.length - 1; i >= 0; i--) {
-      newString += input[i];
-    }
-    return newString;
-    
-    
+      newString += input[i]; // this will concatenate the strings where each iteration will be placedinto the var newString = " " i.e first iteration will equate to 
+    }                         // newString which is just " " at the moment, + input[lenght-1 (which is "o")]
+    return newString;         // therefore the first iteration reads to the newString as "o"
+                              // 2nd iteration is newString = "o" += [length-2 which is "l"(decrease by 1 in each iteration i--)]
+                              // 2nd iteration logs to newString as newString = "lo"; and so on....
     // YOUR CODE GOES ABOVE HERE //
 }
 
