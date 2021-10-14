@@ -91,14 +91,16 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
-    if (typeof value === 'object' && value !== null && Array.isArray(value) !== true && !(value instanceof Date)) {
-        return "object";
-    } else if (Array.isArray(value)) {
+    if (typeof value !== 'object') {
+        return typeof value; // string, number, undefined, boolean, funciton
+    } else if (Array.isArray(value) === true) {
         return "array";
-    } else if (typeof value === "string") {
-        return "string";
-    } else if (typeof value === "undefined" && value !== null) {
-        return "undefined"
+    } else if (typeof value === 'object' && value !== null && Array.isArray(value) !== true && !(value instanceof Date)) {
+        return "object";
+    } else if (value === null) {
+        return "null";
+    } else {
+        return "date"
     }
 
     
