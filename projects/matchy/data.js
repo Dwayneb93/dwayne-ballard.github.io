@@ -12,29 +12,40 @@
 // Step 1 - Object Creation //////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 var animal = {};
-animal.species = "reptile";
-animal['species'] = "reptile";
+animal.species = "dolphin";
+animal['name'] = "Gary";
+animal['noises'] = [];
+console.log(animal);
 
 
 //////////////////////////////////////////////////////////////////////
 // Step 2 - Array Creation ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
-
+var noises = [];
+noises[0] = "trills";
+noises.push("squeaks");
+noises.unshift("whistles");
+noises[noises.length] = "clicks";
+console.log(noises.length);
+console.log(noises.length - 1);
+console.log(noises);
 
 //////////////////////////////////////////////////////////////////////
 // Step 3 - Combining Step 1 and 2 ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+animal['noises'] = noises;
+animal.noises.push("grunts");
+console.log(animal);
 
 
 /* *******************************************************************
  * Step 4 - Review
  *
  * 1. What are the different ways you can access properties on objects?
- *
+ *  You can access properties on objects by using dot or bracket notation.
  * 2. What are the different ways of accessing elements on arrays?
- *
+ *  You can access elements in arrays by using their indexed value and by using
+ *  various methods to manipulate said array.
  * *******************************************************************
  */
 
@@ -50,6 +61,7 @@ animal['species'] = "reptile";
 //////////////////////////////////////////////////////////////////////
 // Step 6 - A Collection of Animals //////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+var animals = [];
 
 
 
