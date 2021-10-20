@@ -12,8 +12,8 @@
 // Step 1 - Object Creation //////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 var animal = {};
-animal.species = "dolphin";
-animal['name'] = "Gary";
+animal.species = 'dolphin';
+animal['name'] = 'Gary';
 animal['noises'] = [];
 console.log(animal);
 
@@ -62,12 +62,48 @@ console.log(animal);
 // Step 6 - A Collection of Animals //////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 var animals = [];
+animals.push(animal);
+console.log(animals);
 
+var duck = {
+  species: "duck",
+  name: "Jerome",
+  noises: ['quack', 'honk', 'sneeze', 'woosh']
+};
 
+animals.push(duck);
 
+console.log(animals);
+
+var wolf = {
+  species: "wolf",
+  name: "Balto",
+  noises: ['howl', 'snarl', 'bark', 'whine']
+};
+animals.push(wolf);
+console.log(animals);
+
+var owl = {
+  species: "owl",
+  name: "Ollie",
+  noises: ['hoot', 'whistles', 'coos']
+};
+animals.push(owl);
+console.log(animals);
+console.log(animals.length);
 //////////////////////////////////////////////////////////////////////
 // Step 7 - Making Friends ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+var friends = []; // I chose this structure because it is best for holding lists of "string" data.
+function getRandom(animals) {
+  return Math.floor(Math.random() * animals.length);
+};
+console.log(getRandom(animals));
+
+// use the .toString(); method
+
+
+
 
 
 
