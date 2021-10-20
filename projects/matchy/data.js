@@ -95,12 +95,22 @@ console.log(animals.length);
 // Step 7 - Making Friends ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 var friends = []; // I chose this structure because it is best for holding lists of "string" data.
-function getRandom(animals) {
-  return Math.floor(Math.random() * animals.length);
-};
-console.log(getRandom(animals));
+function getRandom(array) { // we want this code to be reusable so we test it to a blank value
+  var newArray = []; // [0, 1, 2, 3] // set a placeholder for the loop to push its values to
+  for (var i = 0; i <= array.length - 1; i++) { // this loop function loops through the array at each
+    newArray.push(i);                           // index (i) and pushes that index into the newArray
+  }
+  return Math.floor(Math.random() * (newArray[newArray.length - 1] - newArray[0]) + newArray[0]); // newArray.length - 1 just gives us a number; newArray[newArray.length - 1] gives us whole element
+}; // gives us a range from 0 index to 3 index
+var randomIndex = getRandom(animals); // now we made a new variable called randomIndex and are calling the random function with our array (animals) argument
+console.log(randomIndex); // this logs to console and shows us that we are getting a random variable
+friends.push(animals[randomIndex].name); // we are pushing to friends array by accessing animals array at a random index and then accessing the name
+console.log(friends); //now a random animal prints to friens array
 
-// use the .toString(); method
+animals[1]['friends'] = friends; // now it is accessing 
+// the first indexed value of animals, (animals[1]), then we use bracket notation to create new property 'friends', and then we give that property the value of our recently created friends array
+
+
 
 
 
