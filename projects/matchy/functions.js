@@ -51,14 +51,23 @@ function remove(animals, name) {
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 function add(animals, animal) {
-    for (let i = animals[0]; i < animals.length; i++) {
-        if (animal.name !== animals[i].name) {
-            return animals.push(animal);
-            break;
+    let size = Object.keys(animal).length;
+    countedSameName = 0;
+    nameArray = [];
+    for (var i = 0; i < animals.length; i++) {
+        if (animals[i].name === animal.name) {
+            countedSameName += 1;
         }
     }
+    if (countedSameName > 0) {
+        nameArray.push(animal.name);
+    }   
+    if (nameArray.length > 0) {
+        return animals;
+    } else {
+        return animals.push(animal);
+    }
 }
-
 
 /**
  * You did it! You're all done with Matchy!
