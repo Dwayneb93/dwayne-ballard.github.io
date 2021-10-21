@@ -13,14 +13,36 @@ function triangles(input) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function fizzBuzz() {
+  for (let i = 1; i <= 15; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log("fizzbuzz"); 
+    } else if (i % 3 === 0) {
+      console.log("fizz");
+    } else if (i % 5 === 0) {
+      console.log("buzz");
+    } else {
+      console.log(i);
+    }
+  }
 }
 ////////////////////////////////////////////////////////////////////////////////
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard() {
-
-}
+function drawChessboard(input) {
+  let board = "";
+  for (let y = 0; y < input; y++) {
+    for (let x = 0; x < input; x++) {
+      if ((x + y) % 2 === 0) {
+        board += " "; // if sum of numbers is even, add space to 'board'
+      } else {
+        board += "#"; // if sum of numbers is NOT even, add a # to 'board'
+      }
+    }
+    board += "\n"; // once x || y exceeds that input limit, return a new line
+  }
+  console.log(board); // log the entire board outside loop since the variable
+}                     // containing the board is outside loop
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
