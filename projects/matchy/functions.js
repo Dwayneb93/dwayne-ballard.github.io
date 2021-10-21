@@ -12,8 +12,22 @@
 //////////////////////////////////////////////////////////////////////
 // Step 1 - Search ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
-
+function search(array, string) {
+    var array = [];
+    for (var i = 0; i <= array.length; i++) {
+        if (array.name === string) {
+            return array; 
+        } else {
+            return array;
+        }
+    }
+}
+//Implement a function declaration called `search` that:
+//- Takes a paramater representing an Array of `animals`.
+//- Takes a paramater representing a String, the name of an animal on which to perform a search.
+//- Looks through the `animals` Array, and returns the animal's Object if an animal with that name exists.
+//- Returns `null` if no animal with that name exists
+//3. Use the search bar at the top of the page to make sure your function works.
 
 //////////////////////////////////////////////////////////////////////
 // Step 2 - Replace //////////////////////////////////////////////////
