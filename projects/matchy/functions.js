@@ -12,39 +12,47 @@
 //////////////////////////////////////////////////////////////////////
 // Step 1 - Search ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-function search(array, string) {
-    var array = [];
-    for (var i = 0; i <= array.length; i++) {
-        if (array.name === string) {
-            return array; 
-        } else {
-            return array;
+function search(animals, name) {
+    for (var i = 0; i < animals.length; i++) { // iterate through the input array
+        if (animals[i].name === name) {       // at each iteration, you need to determine if the 
+            return animals[i];              // current object being accessed has a name property equal
         }
-    }
-}
-//Implement a function declaration called `search` that:
-//- Takes a paramater representing an Array of `animals`.
-//- Takes a paramater representing a String, the name of an animal on which to perform a search.
-//- Looks through the `animals` Array, and returns the animal's Object if an animal with that name exists.
-//- Returns `null` if no animal with that name exists
-//3. Use the search bar at the top of the page to make sure your function works.
+        }
+        return null; // because we dont want it to automatically exit function if first object name doesnt equal
+}                      // we want the function to iterate through each object first, then null if it brings back false
+
 
 //////////////////////////////////////////////////////////////////////
 // Step 2 - Replace //////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+function replace(animals, name, replacement) {
+    for (var i = 0; i < animals.length; i++) {
+        if (animals[i].name === name) {
+            replace(animals[i].name, replacement);
+        }
+    }
+}
 
 
 
 //////////////////////////////////////////////////////////////////////
 // Step 3 - Remove ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+function remove(animals, name) {
+    for (var i = 0; i < animals.length; i++) {
+        if (animals[i].name === name) { // if name is equal to name
+            return animals.splice(i, 1); // return the new object and splice it at
+        }                                // the index of i that equals name, and make
+    }                                    // 1 removal
+}
 
 
 //////////////////////////////////////////////////////////////////////
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+function add() {
 
+}
 
 
 /**
