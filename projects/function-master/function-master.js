@@ -2,6 +2,7 @@
 // Function 1 - Object Values ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+
 function objectValues(object) {
     return Object.values(object);  
 } 
@@ -23,8 +24,10 @@ function keysToString(object) {
 function valuesToString(object) {
     var arrValues = [];
     for (var key in object) {
+        if (typeof object[key] === "string") {
         arrValues.push(object[key]);
     }
+}
     return arrValues.join(" ");
 }
 
@@ -52,11 +55,16 @@ function capitalizeWord(string) {
 // Function 6 - Capitalize All Words /////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function capitalizeAllWords(string) {
-    return string.replace(/(?:^|\s)\S/g, function(a) {
-        return a.toUpperCase(); 
-    });
-}
+function capitalizeAllWords(string) {        // "Dwayne is coding" 
+    var splitArray = string.split(" ");
+    var capitalizeString = "";               // ["Dwayne", "is", "coding"] ex.
+        for (var i = 0; i < splitArray.length; i++) { //loops through each index
+            var capital = splitArray[i].replace(splitArray[i][0], splitArray[i][0].toUpperCase());
+            capitalizeString += capital + " "; // even added space at LAST ITERATION that we MUST REMOVE with trim()
+            console.log(capitalizeString);                               // i at 0 = "Dwayne"           // 
+        }
+        return capitalizeString.trim(); // takes empty space from beginning and end
+    }                                   // of string and removes it
 
 //////////////////////////////////////////////////////////////////////
 // Function 7 - Welcome Message //////////////////////////////////////
@@ -79,7 +87,13 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-
+    for (var key in object) {
+        if (object.hasOwnProperty("noises") && object["noises"].length > 0) {
+            var noise = object["noises"].join(" ");
+            return noise;
+        } 
+    }
+    return "there are no noises";
 }
 
 //////////////////////////////////////////////////////////////////////
