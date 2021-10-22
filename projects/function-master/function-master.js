@@ -89,8 +89,7 @@ function profileInfo(object) {
 function maybeNoises(object) {
     for (var key in object) {
         if (object.hasOwnProperty("noises") && object["noises"].length > 0) {
-            var noise = object["noises"].join(" ");
-            return noise;
+            return object["noises"].join(" ");
         } 
     }
     return "there are no noises";
@@ -117,7 +116,11 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-
+    if (object.hasOwnProperty("friends") && object["friends"].includes(name)) {
+        return true; //return true if name is a friend of object
+    } else {
+        return false; // return false if name is not a friend of friends array
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -125,7 +128,12 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-
+    var outputArray= [];
+    for (var i = 0; i < array.length; i++) { //taking in an array of objects
+        if (array[i].name !== array[i]["friends"].includes(name)) {
+            outputArray.push(name)
+        }
+    } return outputArray;
 }
 
 //////////////////////////////////////////////////////////////////////
