@@ -14,7 +14,7 @@
 var animal = {};
 animal.species = 'dolphin';
 animal['name'] = 'Gary';
-animal['noises'] = [];
+animal.noises = [];
 console.log(animal);
 
 
