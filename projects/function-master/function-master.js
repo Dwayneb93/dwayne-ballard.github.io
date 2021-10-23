@@ -71,15 +71,18 @@ function capitalizeAllWords(string) {        // "Dwayne is coding"
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
-
-}
+    var capitalizeNameString = "Welcome " + object.name.replace(object.name[0], object.name[0].toUpperCase()) + "!";
+        return capitalizeNameString;
+    }
+   
 
 //////////////////////////////////////////////////////////////////////
 // Function 8 - Profile Info /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-
+    var message = object.name.replace(object.name[0], object.name[0].toUpperCase()) + " is a " + object.species.replace(object.species[0], object.species[0].toUpperCase());
+    return message;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -128,10 +131,11 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-    var outputArray= [];
-    for (var i = 0; i < array.length; i++) { //taking in an array of objects
-        if (array[i].name !== array[i]["friends"].includes(name)) {
-            outputArray.push(name)
+    var nonFriends = []; // to hold the outputs our loop iterates through
+    for (var i = 0; i < array.length; i++) { //loops through an array of people to access each person and see
+                                               //  if they contain certain info (names)
+        if (array[i].name === array[i]["friends"].includes(name)) {  
+            nonFriends.push(name)
         }
     } return outputArray;
 }
