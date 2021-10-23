@@ -103,7 +103,11 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-
+    if (string.includes(word)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -111,7 +115,8 @@ function hasWord(string, word) {
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
-
+    object.friends.push(name);
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -131,13 +136,15 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-    var nonFriends = []; // to hold the outputs our loop iterates through
-    for (var i = 0; i < array.length; i++) { //loops through an array of people to access each person and see
-                                               //  if they contain certain info (names)
-        if (array[i].name === array[i]["friends"].includes(name)) {  
-            nonFriends.push(name)
+   var notFriends = [];
+   for (var i = 0; i < array.length; i++) { //looping through array (friends)
+    // to see if friends array includes a specific name; if it doesn't we want to push THOSE names
+    // into notFriends array
+        if ((array[i].friends.includes(name) || array[i].name === name) !== true) { //includes method evaluates to true or false
+            notFriends.push(array[i].name);
         }
-    } return outputArray;
+   } return notFriends;
+
 }
 
 //////////////////////////////////////////////////////////////////////
