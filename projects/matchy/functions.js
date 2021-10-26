@@ -50,22 +50,23 @@ function remove(animals, name) {
 //////////////////////////////////////////////////////////////////////
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+/*
+animals = [duck, shark, lizard],
+dog = {
+    name: "Ben",        
+    friends: [];
+}
+    add(animals, dog);
+
+}*/
+
 function add(animals, animal) {
-    let size = Object.keys(animal).length;
-    countedSameName = 0;
-    nameArray = [];
     for (var i = 0; i < animals.length; i++) {
-        if (animals[i].name === animal.name) {
-            countedSameName += 1;
+        // If name dooesn't exist in array, add it
+        if (animals[i].name != animal.name) { //
+            animals.push(animal);
         }
-    }
-    if (countedSameName > 0) {
-        nameArray.push(animal.name);
-    }   
-    if (nameArray.length > 0) {
         return animals;
-    } else {
-        return animals.push(animal);
     }
 }
 

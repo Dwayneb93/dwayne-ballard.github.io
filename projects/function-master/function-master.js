@@ -141,7 +141,8 @@ function nonFriends(name, array) {
     // to see if friends array includes a specific name; if it doesn't we want to push THOSE names
     // into notFriends array
         if ((array[i].friends.includes(name) || array[i].name === name) !== true) { //includes method evaluates to true or false
-            notFriends.push(array[i].name);
+            notFriends.push(array[i].name); // so if the name isnt included in the friends array
+            // or the name isn't equal the name we are searching for, then push that name to array
         }
    } return notFriends;
 
@@ -152,15 +153,26 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+ for (var i = 0; i < object.length; i++) {
+    if (object[i][key]["value"] !== value || object[i][key]["value"] !== value) {
+       return object[key].value = value; 
+    } else {
+        return object;
+    }
+    }
 }
-
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+    for (var key in object) {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i].includes(object[key])) {
+            }
+        }
+        delete object.key;
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
