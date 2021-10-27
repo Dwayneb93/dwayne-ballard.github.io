@@ -52,8 +52,6 @@ _.typeOf = function(value) {
         return "object";
     } else if (value === null) {
         return "null";
-    } else {
-        return "date"
     }
 }
 
@@ -74,7 +72,17 @@ _.typeOf = function(value) {
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
-
+_.first = function(arr, num) {
+    if (Array.isArray(arr) !== true || num < 0) {
+        return [];
+    } else if (num === undefined) {
+        return arr[0];
+    } else if (num > arr.length) {
+        return arr;
+    } else {
+        return arr.slice(0, num);
+    }
+}
 
 /** _.last
 * Arguments:
