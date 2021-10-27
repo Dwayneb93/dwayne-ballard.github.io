@@ -63,7 +63,7 @@ dog = {
 function add(animals, animal) {
     for (var i = 0; i < animals.length; i++) {
         // If name dooesn't exist in array, add it
-        if (animals[i].name != animal.name) { //
+        if (animals[i].name !== animal.name && animals[i].species !== animal.species) { 
             animals.push(animal);
         }
         return animals;

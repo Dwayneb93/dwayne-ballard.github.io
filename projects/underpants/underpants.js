@@ -143,7 +143,9 @@ _.typeOf = function(value) {
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-
+_.each = function(collection, func) {
+    // once this each unction is created, copy the whole code
+}
 
 /** _.unique
 * Arguments:
