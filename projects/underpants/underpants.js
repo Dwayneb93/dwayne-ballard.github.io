@@ -101,7 +101,17 @@ _.first = function(arr, num) {
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
-
+_.last = function(arr, num) {
+    if (!Array.isArray(arr) || num < 0) {
+        return [];
+    } else if (num === undefined) {
+        return arr[arr.length - 1];
+    } else if (num > arr.length) {
+        return arr;
+    } else {
+        return arr.slice(num - 1, arr.length);
+    }
+}
 
 /** _.indexOf
 * Arguments:
@@ -118,7 +128,14 @@ _.first = function(arr, num) {
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+_.indexOf = function(arr, value) {
+    for (var index = 0; index < arr.length; index++) {
+        if (value === arr[index]) {
+            return index;
+        }
+    }
+    return -1;
+}
 
 /** _.contains
 * Arguments:
@@ -135,6 +152,12 @@ _.first = function(arr, num) {
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function(arr, value) {
+    for (var i = 0; i < arr.length; i++) {
+        var index = arr.indexOf(value);
+        return (index === -1) ? false : true;
+    }
+}
 
 /** _.each
 * Arguments:
@@ -152,8 +175,17 @@ _.first = function(arr, num) {
 *      -> should log "a" "b" "c" to the console
 */
 _.each = function(collection, func) {
-    // once this each unction is created, copy the whole code
-}
+    if (Array.isArray(collection)) {
+        for (var i = 0; i < collection.length; i++) {
+            func(collection[i], i, collection);
+        } 
+        } else {
+            for (var key in collection) {
+                func(collection[key], key, collection);
+            }
+        }
+    }
+
 
 /** _.unique
 * Arguments:
@@ -165,6 +197,12 @@ _.each = function(collection, func) {
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function (arr) {
+    var unique = arr.filter(function(elem, index, self) {
+        return index === self.indexOf(elem);
+    });
+    return unique;
+}
 
 /** _.filter
 * Arguments:
@@ -181,7 +219,9 @@ _.each = function(collection, func) {
 * Extra Credit:
 *   use _.each in your implementation
 */
-
+_.filter = function(array, func) {
+    
+}
 
 /** _.reject
 * Arguments:
