@@ -153,34 +153,35 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
- for (var i = 0; i < object.length; i++) {
-    if (object[i][key]["value"] !== value || object[i][key]["value"] !== value) {
-       return object[key].value = value; 
-    } else {
-        return object;
-    }
-    }
+    object[key] = value;
+    return object;
 }
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-    for (var key in object) {
-        for (var i = 0; i < array.length; i++) {
-            if (array[i].includes(object[key])) {
-            }
+if (array.length > 0) {
+    for (var x in object) {
+        for (var y = 0; y < array.length; y++) {
+            if (array[y] === x || array[y] == object[x])
+            delete object[x];
         }
-        delete object.key;
     }
 }
+return object;
+}
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 16 - Dedup ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
+    var unique = array.filter(function(elem, index, self) {
+        return index == self.indexOf(elem);
+    });
+    return unique;
 }
 
 //////////////////////////////////////////////////////////////////////
