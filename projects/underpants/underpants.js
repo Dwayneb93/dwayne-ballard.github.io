@@ -46,12 +46,14 @@ _.identity = function(value) {
 _.typeOf = function(value) {
     if (typeof value !== "object") {
         return typeof value;
-    } else if (Array.isArray(value) === true) {
+    } else if (Array.isArray(value)) {
         return "array";
     } else if (typeof value === 'object' && value !== null && Array.isArray(value) !== true && !(value instanceof Date)) {
         return "object";
     } else if (value === null) {
         return "null";
+    } else {
+        return "date";
     }
 }
 
@@ -75,7 +77,7 @@ _.typeOf = function(value) {
 _.first = function(arr, num) {
     if (Array.isArray(arr) !== true || num < 0) {
         return [];
-    } else if (num === undefined) {
+    } else if (num === undefined || num === NaN) {
         return arr[0];
     } else if (num > arr.length) {
         return arr;
@@ -101,15 +103,16 @@ _.first = function(arr, num) {
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
-_.last = function(arr, num) {
+
+_.last = function (arr, num) {
     if (!Array.isArray(arr) || num < 0) {
         return [];
-    } else if (num === undefined) {
+    } else if (num === undefined || num === NaN) {
         return arr[arr.length - 1];
     } else if (num > arr.length) {
         return arr;
     } else {
-        return arr.slice(num - 1, arr.length);
+        return arr.slice(-num); // negative parameter in slice method will remove all things in front of AND including that index
     }
 }
 
