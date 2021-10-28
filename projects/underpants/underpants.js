@@ -131,14 +131,16 @@ _.last = function (arr, num) {
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-_.indexOf = function(arr, value) {
-    for (var index = 0; index < arr.length; index++) {
-        if (value === arr[index]) {
-            return index;
-        }
+
+_.indexOf = function (arr, value) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === value) {
+            return i;
+        } 
     }
     return -1;
 }
+
 
 /** _.contains
 * Arguments:
