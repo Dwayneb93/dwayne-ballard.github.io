@@ -311,6 +311,27 @@ _.filter = function(array, func) {
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
+_.every = function (collection, func) {
+    if (func === undefined) { // if not function is given
+        return false;
+    }
+    else if (Array.isArray(collection)) {
+        // loop through collection
+        for (var i = 0; i < collection.length; i++) {
+            if (func(collection[i], i, collection) === false) { // tester function
+                return false; //only want to return on false tests
+            }
+        }
+        return true; // return true outside loop
+    } else { /// now what if collection isn't an array?
+        for (var key in collection) { // for in loop to loop through object
+            if (func(collection[key], key, collection) === false) {
+                return false;
+            }
+        }
+        return true;
+    } 
+}
 
 
 /** _.some
@@ -354,7 +375,19 @@ _.filter = function(array, func) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
-
+_.reduce = function (array, func, seed) { // intend to iterate through an array and create an accumulation effect. Want to return a single value at end
+    if (seed === undefined) {
+        seed = array[0]; // assign seed the value of array[0]
+        for (var i = 1; i < array.length; i++) { // since seed is already at the first element, we want to start at next iundex
+            seed = func(seed, array[i], i); // prev, current, index, seed is reset at each iteration in loop, its how we're creating the accumulation effect
+        }
+    } else { // if seed !== undefined
+        for (var i = 0; i < array.length; i++) { // since seed is already initialized..
+            seed = func(seed, array[i], i);
+        }
+    }
+    return seed;
+}
 /** _.extend
 * Arguments:
 *   1) An Object
