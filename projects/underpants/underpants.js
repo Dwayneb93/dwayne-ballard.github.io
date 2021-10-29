@@ -202,9 +202,9 @@ _.each = function(collection, func) {
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
-_.unique = function (arr) {
-    var unique = arr.filter(function(elem, index, self) {
-        return index === self.indexOf(elem);
+_.unique = function(arr) {
+    var unique = arr.filter(function(arr, index, self) {
+        return index === self.indexOf(arr);
     });
     return unique;
 }
@@ -247,6 +247,15 @@ _.filter = function(arr, func) { //looping through an array and using a tester f
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
+_.reject = function(array, func) {
+    var newArray = [];
+    for (var i = 0; i < array.length; i++) {
+        if (func(array[i], i, array) !== true) {
+            newArray.push(array[i]);
+        }
+    }
+    return newArray;
+}
 
 /** _.partition
 * Arguments:
@@ -267,6 +276,20 @@ _.filter = function(arr, func) { //looping through an array and using a tester f
 }
 */
 
+_.partition = function(array, func) {
+    var newArray = [];
+    var trueArray = [];
+    var falseArray =[];
+    for (var i = 0; i < array.length; i++) {
+        if (func(array[i], i, array)) {
+            trueArray.push(array[i]);
+        } else {
+            falseArray.push(array[i]);
+        }
+    }
+    newArray.push(trueArray, falseArray);
+    return newArray;
+}
 
 /** _.map
 * Arguments:
@@ -284,6 +307,20 @@ _.filter = function(arr, func) { //looping through an array and using a tester f
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function(collection, func) {
+    var newArray =[];
+    if (Array.isArray(collection)) { //if collection is array...
+        for (var i = 0; i < collection.length; i++) { // if it is an array loop through it and...
+            newArray.push(func(collection[i], i, collection))
+        }
+        return newArray;
+    } else {
+        for (var key in collection) {
+            newArray.push(func(collection[key], key, collection))
+        }
+        return newArray;
+    }
+} 
 
 /** _.pluck
 * Arguments:
@@ -296,7 +333,12 @@ _.filter = function(arr, func) { //looping through an array and using a tester f
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
-
+_.pluck = function(array, property) {
+    var plucked = _.map(array, function(object, i, array) { //map is going to take in an array and a test
+        return object[property];
+    });
+    return plucked;
+}
 /** _.every
 * Arguments:
 *   1) A collection
@@ -318,8 +360,10 @@ _.filter = function(arr, func) { //looping through an array and using a tester f
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 _.every = function (collection, func) {
-    if (func === undefined) { // if not function is given
-        return false;
+    if (func === undefined) { // if function is not given
+        for (var i = 0; i < collection.length; i++) { 
+            return (collection[i]) ? true : false;
+        }
     }
     else if (Array.isArray(collection)) {
         // loop through collection
@@ -361,7 +405,25 @@ _.every = function (collection, func) {
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
-
+_.some = function(collection, func) {
+    if (func === undefined) {
+        for (var i = 0; i < collection.length; i++) {
+            return (collection[i]) ? true : false;
+        } 
+    } else {
+        var newArray = [];
+        var count = 0;
+        for (var key in collection) {
+            newArray.push(func(collection[key], key, collection));
+        }
+        for (var j = 0; j < newArray.length; j++) {
+            if (newArray[j]) {
+                count += 1;
+            }
+        }
+        return (count > 0) ? true : false;
+}
+}
 /** _.reduce
 * Arguments:
 *   1) An array
@@ -408,6 +470,15 @@ _.reduce = function (array, func, seed) { // intend to iterate through an array 
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function (obj1, obj2, obj3, obj4, obj5) {
+    for(var i = 1; i < arguments.length; i++) {
+        _.each(arguments[i], function(value, key) {
+            obj1[key] = value;
+        });
+    }
+    return obj1;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
