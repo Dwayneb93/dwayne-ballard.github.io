@@ -22,7 +22,14 @@ var _ = require('underbar');
  */
 
 var maleCount = function(array) {
-
+    var allMen = _.filter(array, function(customer, index, array) {
+        if (customer.gender === "male") {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    return allMen.length; //since the filter function returns an array of items that fit that tester function, we can just call the length of that array to get the number of items
 };
 
 var femaleCount;

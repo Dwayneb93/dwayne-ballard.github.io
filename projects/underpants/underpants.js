@@ -224,8 +224,14 @@ _.unique = function (arr) {
 * Extra Credit:
 *   use _.each in your implementation
 */
-_.filter = function(array, func) {
-    
+_.filter = function(arr, func) { //looping through an array and using a tester function 
+    var filteredArr = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (func(arr[i], i, arr)) {
+            filteredArr.push(arr[i]);
+        }
+    }
+    return filteredArr;
 }
 
 /** _.reject
