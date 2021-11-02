@@ -159,9 +159,11 @@ _.indexOf = function (arr, value) {
 
 _.contains = function(arr, value) {
     for (var i = 0; i < arr.length; i++) {
-        var index = arr.indexOf(value);
-        return (index === -1) ? false : true;
+        if (arr[i] === value) {
+            return true;
+        }
     }
+    return false;
 }
 
 /** _.each
@@ -203,10 +205,13 @@ _.each = function(collection, func) {
 */
 
 _.unique = function(arr) {
-    var unique = arr.filter(function(arr, index, self) {
-        return index === self.indexOf(arr);
-    });
-    return unique;
+    let uniqueArray = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (uniqueArray.indexOf(arr[i]) === -1) {
+            uniqueArray.push(arr[i])
+        }
+    }
+    return uniqueArray;
 }
 
 /** _.filter
@@ -334,7 +339,7 @@ _.map = function(collection, func) {
 */
 
 _.pluck = function(array, property) {
-    var plucked = _.map(array, function(object, i, array) { //map is going to take in an array and a test
+    var plucked = _.map(array, function(object) { //map is going to take in an array and a test
         return object[property];
     });
     return plucked;
@@ -362,10 +367,9 @@ _.pluck = function(array, property) {
 _.every = function (collection, func) {
     if (func === undefined) { // if function is not given
         for (var i = 0; i < collection.length; i++) { 
-            return (collection[i]) ? true : false;
+            return (collection[i] ? true : false);
         }
-    }
-    else if (Array.isArray(collection)) {
+    } else if (Array.isArray(collection)) {
         // loop through collection
         for (var i = 0; i < collection.length; i++) {
             if (func(collection[i], i, collection) === false) { // tester function
@@ -406,23 +410,25 @@ _.every = function (collection, func) {
 */
 
 _.some = function(collection, func) {
-    if (func === undefined) {
-        for (var i = 0; i < collection.length; i++) {
-            return (collection[i]) ? true : false;
-        } 
-    } else {
-        var newArray = [];
-        var count = 0;
-        for (var key in collection) {
-            newArray.push(func(collection[key], key, collection));
+    if (func === undefined) { 
+        for (var i = 0; i < collection.length; i++) { 
+            return (collection[i] ? true : false);
         }
-        for (var j = 0; j < newArray.length; j++) {
-            if (newArray[j]) {
-                count += 1;
+    } else if (Array.isArray(collection)) {
+        for (var i = 0; i < collection.length; i++) {
+            if (func(collection[i], i, collection) === true) { // tester function
+                return true; 
             }
         }
-        return (count > 0) ? true : false;
-}
+        return false;
+    } else {
+        for (var key in collection) { 
+            if (func(collection[key], key, collection) === true) {
+                return true;
+            }
+        }
+        return false;
+    } 
 }
 /** _.reduce
 * Arguments:
@@ -443,7 +449,7 @@ _.some = function(collection, func) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
-_.reduce = function (array, func, seed) { // intend to iterate through an array and create an accumulation effect. Want to return a single value at end
+_.reduce = function(array, func, seed) { // intend to iterate through an array and create an accumulation effect. Want to return a single value at end
     if (seed === undefined) {
         seed = array[0]; // assign seed the value of array[0]
         for (var i = 1; i < array.length; i++) { // since seed is already at the first element, we want to start at next iundex
@@ -471,8 +477,8 @@ _.reduce = function (array, func, seed) { // intend to iterate through an array 
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 
-_.extend = function (obj1, obj2, obj3, obj4, obj5) {
-    for(var i = 1; i < arguments.length; i++) {
+_.extend = function(obj1, obj2) {
+    for(var i = 0; i < arguments.length; i++) {
         _.each(arguments[i], function(value, key) {
             obj1[key] = value;
         });
