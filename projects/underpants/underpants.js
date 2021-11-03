@@ -430,6 +430,7 @@ _.some = function(collection, func) {
         return false;
     } 
 }
+
 /** _.reduce
 * Arguments:
 *   1) An array
@@ -484,7 +485,7 @@ _.extend = function(obj1, obj2) {
         });
     }
     return obj1;
-};
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
