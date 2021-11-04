@@ -126,7 +126,7 @@ var modulo = function(x, y) {
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator  or
-// JavaScript's Math object.
+// JavaScript's Math object. // think that 2 + 2 + 2 + 2 is same has 2 * 4 multiple (2, -3) is same as -2 + -2 + -2 now think of two negatives
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function(x, y) {
 };

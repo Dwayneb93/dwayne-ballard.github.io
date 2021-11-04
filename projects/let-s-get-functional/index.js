@@ -22,7 +22,7 @@ var _ = require('underbar');
  */
 
 var maleCount = function(array) {
-    var allMen = _.filter(array, function(customer, index, array) {
+    var allMen = _.filter(array, function(customer) {
         if (customer.gender === "male") {
             return true;
         } else {
@@ -32,9 +32,23 @@ var maleCount = function(array) {
     return allMen.length; //since the filter function returns an array of items that fit that tester function, we can just call the length of that array to get the number of items
 };
 
-var femaleCount;
+var femaleCount = function(array) {
+    var allFemales = _.reduce(array, function(previous, current) {
+        return previous += current.gender === "female";
+    }, 0); // <--- this 0 is the seed parameter... think of all the above as just the function param
+    return allFemales;
+}
 
-var oldestCustomer;
+var oldestCustomer = function(array) {
+    var oldestName = _.reduce(array, function(maxAge, currVal, i) {
+        var oldestAge = 0;
+        if (currVal.age > maxAge) {
+            oldestAge = currVal.age;
+        }
+        return oldestAge;
+    }, 0);
+    return oldestName.name;
+}
 
 var youngestCustomer;
 
