@@ -33,26 +33,32 @@ var maleCount = function(array) {
 };
 
 var femaleCount = function(array) {
-    var allFemales = _.reduce(array, function(previous, current) {
-        return previous += current.gender === "female";
-    }, 0); // <--- this 0 is the seed parameter... think of all the above as just the function param
+    var allFemales = _.reduce(array, function(femaleCount, person) {
+        if (person.gender === "female") {
+            femaleCount += 1;
+        }
+        return femaleCount;
+    }, 0);
     return allFemales;
 }
 
 var oldestCustomer = function(array) {
-    var oldestName = _.reduce(array, function(maxAge, currVal, i) {
-        var oldestAge = 0;
-        if (currVal.age > maxAge) {
-            oldestAge = currVal.age;
-        }
-        return oldestAge;
-    }, 0);
-    return oldestName.name;
+    var oldestName = _.reduce(array, function(oldestCustomer, currVal) {
+ 
+    }, "");
+
 }
 
 var youngestCustomer;
 
-var averageBalance;
+var averageBalance = function(array) {
+    var balances = _.reduce(array, function(total, person){
+        var removeDollarSign = person.balance.slice(1); // slice starts array at index provided, deleting the 0 index
+        var intBalance = parseFloat(removeDollarSign);
+        return total + intBalance;
+    }, 0);
+    return balances / array.length;
+}
 
 var firstLetterCount;
 
@@ -62,7 +68,17 @@ var friendsCount;
 
 var topThreeTags;
 
-var genderCount;
+var genderCount = function(array) {
+    var genders = _.reduce(array, function(genderCount, person){
+        if (genderCount[person.gender]) {
+            genderCount[person.gender] += 1;
+        } else {
+            genderCount[person.gender] = 1;
+        }
+        return genderCount;
+    }, {})
+    return genders;
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
