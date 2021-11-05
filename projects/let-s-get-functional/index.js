@@ -43,18 +43,32 @@ var femaleCount = function(array) {
 }
 
 var oldestCustomer = function(array) {
-    var oldestName = _.reduce(array, function(oldestCustomer, currVal) {
- 
-    }, "");
-
+    var oldestPerson = _.reduce(array, function(oldestAge, currVal) {
+        if (oldestAge.age < currVal.age) {
+            return currVal;
+        } else {
+            return oldestAge;
+        }    
+    });
+    return oldestPerson.name
 }
 
-var youngestCustomer;
+var youngestCustomer = function(array) {
+    var youngestPerson = _.reduce(array, function(youngestAge, currVal){
+        if (youngestAge.age < currVal.age) {
+            return youngestAge;
+        } else {
+            return currVal;
+        }
+    });
+    return youngestPerson.name;
+}
 
 var averageBalance = function(array) {
     var balances = _.reduce(array, function(total, person){
         var removeDollarSign = person.balance.slice(1); // slice starts array at index provided, deleting the 0 index
-        var intBalance = parseFloat(removeDollarSign);
+        var noCommaNum = removeDollarSign.replaceAll(",", ""); // need to remove dollar signs, string quotes, and commas to add
+        var intBalance = parseFloat(noCommaNum);
         return total + intBalance;
     }, 0);
     return balances / array.length;
