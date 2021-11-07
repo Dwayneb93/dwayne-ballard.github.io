@@ -87,7 +87,7 @@ var sumBelow = function(n) {
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
+var range = function(x, y, arr = []) {
   // base
 
   // recursion
@@ -110,7 +110,15 @@ var powerOfTwo = function(n) {
 };
 
 // 9. Write a function that accepts a string a reverses it.
-var reverse = function(string) {
+var reverse = function(string, outputStr = "") {
+  //base
+  if (outputStr.length === string.length) {
+    return outputStr;
+  }
+  //recursion
+  outputStr = outputStr + string[string.length - 1];
+  return outputStr + reverse(string.slice(-1));
+  
 };
 
 // 10. Write a function that determines if a string is a palindrome.

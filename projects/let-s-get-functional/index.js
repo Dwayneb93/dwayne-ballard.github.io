@@ -74,11 +74,34 @@ var averageBalance = function(array) {
     return balances / array.length;
 }
 
-var firstLetterCount;
+var firstLetterCount = function(array, letter) {
+    var startsWithCount = _.filter(array, function(customer) { // filter loops through each object in the customer array, and tests this func upon each
+        if (customer.name[0].toLowerCase() === letter.toLowerCase()) { // ensures that we are defaulting characters to an easy way to compare
+            return customer.name; // returns name to an output array created by filter func
+        }
+})
+    return startsWithCount.length; // counts number of items in output array (the number of names that start with that letter)
+}
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter) {
+    var friendsWith = _.filter(array, function(array, customer))
+}
+    
 
-var friendsCount;
+var friendsCount = function(array, friendName) {
+    // return an array of ONLY the customer objects who are friends with input name
+    var friendsWith = _.filter(array, function(customer){
+        // if friends property of the current cusomer contains friendName [ {name: }]
+        for (var i = 0; i < friends.length; i++) {
+            if (friends[i].name === friendName) {
+            return true;
+        }
+    }
+    return false;
+});
+    var friendsWithNames = friendsWithNames.map(customer => customer.name);
+
+}
 
 var topThreeTags;
 
