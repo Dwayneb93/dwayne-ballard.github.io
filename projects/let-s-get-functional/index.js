@@ -84,8 +84,11 @@ var firstLetterCount = function(array, letter) {
 }
 
 var friendFirstLetterCount = function(array, customer, letter) {
-    var friendsWith = _.filter(array, function(array, customer))
-}
+    var friendsWith = _.filter(array, function(value) {
+        if(value.name === customer) {
+            return value;
+        }
+    })
     
 
 var friendsCount = function(array, friendName) {
