@@ -4,6 +4,7 @@
 
 var customers = require('./data/customers.json');
 var _ = require('underbar');
+const { startsWith } = require('lodash');
 
 /**
  * 1. Import your lodown module using the require() method,
@@ -84,29 +85,57 @@ var firstLetterCount = function(array, letter) {
 }
 
 var friendFirstLetterCount = function(array, customer, letter) {
-    var friendsWith = _.filter(array, function(value) {
-        if(value.name === customer) {
-            return value;
+    var personList = _.filter(array, function(person) {
+        if(person.name === customer) {
+            return true;
+        } 
+        return false;
+    });
+    var friends = personList[0].friends;
+    var startsWith = _.reduce(friends, function(startsWith, friend) {
+        if(friend.name[0].toLowerCase() === letter.toLowerCase()) {
+            startsWith += 1;
         }
-    })
-    
+        return startsWith;
+    }, 0);
+    return startsWith;
+};
+
+   
 
 var friendsCount = function(array, friendName) {
     // return an array of ONLY the customer objects who are friends with input name
     var friendsWith = _.filter(array, function(customer){
+        var friends = customer.friends;
         // if friends property of the current cusomer contains friendName [ {name: }]
         for (var i = 0; i < friends.length; i++) {
             if (friends[i].name === friendName) {
             return true;
         }
     }
-    return false;
 });
-    var friendsWithNames = friendsWithNames.map(customer => customer.name);
-
+    var friendsWithNames = friendsWith.map(customer => customer.name);
+    return friendsWithNames;
 }
 
-var topThreeTags;
+var topThreeTags = function(array) {
+    var tagsArray = _.map(array, function(value) {
+        return value.tags; // this will map through the customer array and return an array of the tags
+    }).reduce(function(prev, curr) {
+        return prev.concat(curr);
+    }, []);
+    // now we need to create an object to store the pairs of tags and how many times they occur
+    var tagObject = {};
+    for(var i = 0; i < tagsArray.length; i++) { //now looping through the tags array to create keys
+        if(tagObject[tagsArray[i]] !== undefined) { // if this tag is already defined
+            tagObject[tagsArray[i]] += 1; // add the key to the object and add 1
+        } else {
+            tagObject[tagsArray[i]] = 1; // else, create it and assign it a value of 1
+        }
+    };
+    // now we need to return the top 3 keys in the object. can be done by using the methods Object.entries, slice, map, and sort.
+    return Object.entries(tagObject).sort((a, b) => b[1] - a[1]).map(element => element[0]).slice(0, 3);
+};
 
 var genderCount = function(array) {
     var genders = _.reduce(array, function(genderCount, person){
