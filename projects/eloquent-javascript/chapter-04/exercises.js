@@ -2,9 +2,41 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range() {
-
+function range(start, end, step) { 
+  var rangeArr =[];
+  // if the step value exists
+  if (step === undefined) {
+    if (start === end) {
+      return [];
+    }
+    else if (start < end) {
+      for (var i = start; i <= end; i++) {
+        rangeArr.push(i);
+      }
+    } else {
+      for (var i = start; i >= end; i--) {
+        rangeArr.push(i);
+      }
+    }
+  } else {
+    if (step < 0 && start < end) {
+      return [];
+    }
+    else if (start < end) {
+      for (var i = start; i <= end; i += step) {
+        rangeArr.push(i);
+      }
+    } else {
+      for (var i = start; i >= end; i += step) { // since adding neg numbs works like this
+        rangeArr.push(i);
+      }
+    }
+  }
+  return rangeArr;
 }
+
+// range(1, 10) => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// range(5, 2) => [5, 4, 3, 2];
 
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
