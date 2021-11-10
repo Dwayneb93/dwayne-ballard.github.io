@@ -105,34 +105,94 @@ function arrayToList(array) { // [1, 2, 3]
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray() {
-  // base
-
+function listToArray(list, arr=[]) { // => [1, 2, 3]
+  // base // list argument is referring to the same list as above with the rests and stuff
+  if (list.rest === null) {
+    arr.push(list.value);
+    return arr;
+  }
   // recursion
+  arr.push(list.value); // [1. 2]
+  return listToArray(list.rest, arr); // listToArray({value: 3, rest: null})
 }
+
+/*
+
+[1]
+[1, 2]
+[1, 2, 3] => HIT BASE CASE AND RETURN
+
+*/
 
 ////////////////////////////////////////////////////////////////////////////////
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
-
+function prepend(val, obj) { 
+  return {
+    value: val,
+    rest: obj
+  } 
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth() {
-
+function nth(list, n) { // n = 0 // => 1
+  if (n < 0) {
+    return undefined;
+  }
+  // base
+  if (n === 0) {
+    return list.value;
+  }
+  // recursion
+  return nth(list.rest, n - 1);
 }
+/*
+var nthObj = {
+  value: 1,
+  rest: {
+    value: 2,
+    rest: {
+      value: 3,
+      rest: null
+    }
+  }
+}
+*/
 
 ////////////////////////////////////////////////////////////////////////////////
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
-
+function deepEqual(val1, val2) {
+    // if either of the input values are null, return false
+    if (val1 === null || val2 === null) {
+      return false;
+    }
+    // if both values are not objects, compare them directly
+    if (typeof val1 !== 'object' && typeof val2 !== 'oject') {
+      return val1 === val2;
+    }
+  
+    var keys1 = Object.keys(val1); // [array, of, keys]
+    var keys2 = Object.keys(val2); // [array, of, keys]
+  
+    // determine if the keys arrays are the same length, if not, return false
+    if (keys1.length !== keys2.length) {
+      return false;
+    }
+  
+    // iterate through the keys arrays
+    for (var i = 0; i < keys1.length; i++) {
+      // does keys2 include the current key from keys1
+      if (!keys2.includes(keys1[i]) || !deepEqual(val1[keys1[i]], val2[keys2[i]])) { // if this resolves to falsey, then..
+        return false;
+      }
+    }
+    return true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
