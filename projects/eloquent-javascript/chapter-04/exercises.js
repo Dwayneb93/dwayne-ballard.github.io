@@ -3,12 +3,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 function range(start, end, step) { 
+  // initialize output array variable
   var rangeArr =[];
-  // if the step value exists
+  // if step is not present, do this code
   if (step === undefined) {
     if (start === end) {
       return [];
-    }
+    } 
     else if (start < end) {
       for (var i = start; i <= end; i++) {
         rangeArr.push(i);
