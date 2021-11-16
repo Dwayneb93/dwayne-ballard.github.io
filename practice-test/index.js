@@ -161,4 +161,6 @@ var firstInClass = function(arr, obj={}) { // i created a default parameter here
 
 
 // 7.
-var votes;
+var votes = dogs.reduce(function(previousValue, currentValue) {
+    return previousValue + currentValue;
+}, 0);
