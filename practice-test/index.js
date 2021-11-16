@@ -89,10 +89,8 @@ let dogs = [
 
 // 1.
 var greeting = function(greeting, location, time) {
-    var returnStr = "";
-    return returnStr.push(greeting + location + time);
-
-    
+    var patronGreeting = `${greeting} ${location} ${time}`;
+    console.log(patronGreeting);   
 }
 
 
@@ -161,6 +159,6 @@ var firstInClass = function(arr, obj={}) { // i created a default parameter here
 
 
 // 7.
-var votes = dogs.reduce(function(previousValue, currentValue) {
-    return previousValue + currentValue;
+var votes = dogs.reduce(function(totalVotes, currentCount) {
+    return totalVotes += currentCount.votes;
 }, 0);
