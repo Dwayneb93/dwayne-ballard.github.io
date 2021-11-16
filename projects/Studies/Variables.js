@@ -378,7 +378,74 @@ switch (color) {
     // in any of the case statements. it will print "sorry, that color isnt in my palette"
 
 /**
+ * Loops:
  * 
- * 
- * 
+ * 0. Loops are built-in constructs of JavaScript that allow us to execute a block of code as many
+ * times as needed. They are particularly handy for iterating over collections of data. In doing so,
+ * we can pull out the values of a collection to work with them, one by one. There are 3 different kinds of loops:
+ * for loop, for-in loop, and while loops.
  */
+
+// 1. for loop //
+/* Is great for iterating over arrays and has 3 parts to its statement:
+    for (start; stop condition; increment) {
+        code block
+    }
+The start condition is where the loop will begin. The stop condition tells the loop when to stop looping. And 
+the increment tells the code to increment the interation variable by a certain amount. 
+*/
+// Looping over an Array, forwards //
+var names = ["Dwayne", "Blake", "Michael", "Heather"];
+for (var i = 0; i < names.length; i++) {
+    console.log(names[i]);
+}
+// will log: Dwayne, Blake, Michael, Heather to the console in that order
+
+// Looping over an Array, Backwards //
+var names = ["Dwayne", "Blake", "Michael", "Heather"];
+for (var i = names.length - 1; i >= 0; i--) {
+    console.log(names[i]);
+}
+// will log: Heather Michael Blake Dwayne to the console in that order
+
+// 2. for-in loop //
+/* This is a special king of loop that is designed to iterate over objects. This kind of loops gives
+ us access to the keys and values of an object which is what we want to manipulate. The structure of a for in loop is:
+    for (var key in object) {
+        code block
+    }
+*/
+// Loop through an object //
+var student = {
+    name: "Dwayne Ballard",
+    course: "Coding",
+    age: 28,
+    stressed: "yes"
+}
+for (var key in student) {
+    console.log(key); // prints the keys => name, course, age, stressed
+    console.log(student[key]); // prints the values => Dwayne Ballard, Coding, 28, yes
+}
+
+// 3. While loop //
+/* This loop is best for when we do not know the stopping condition of the loop. The structure of a while loop is 
+    while (condition is true) {
+        do this code;
+        increment this much;
+    }
+*/
+// Loop any number of times counting up //
+var count = -3;
+while (count < 5) {
+    console.log(count);
+    count++;
+}
+// prints => -3, -2, -1, 0, 1, 2, 3, 4, 5
+
+// Loop any number of times counting down to 0 //
+var countDown = 10;
+while (countDown >= 0) {
+    console.log(countDown);
+    countDown--;
+}
+// prints => 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
