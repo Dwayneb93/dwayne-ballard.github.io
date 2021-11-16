@@ -270,7 +270,114 @@ var status = (age >= 18) ? 'adult' : 'minor';
     // the value "minor" to status.
 
 /**
- * String Manipulation
+ * String Manipulation:
+ * 
+ * 0. Refers to how strings are manipulated, changed, moved, handled, used, etc in JS. There are 2 ways
+ * in which strings may be manipulated. This is either by string methods or by assignment operators.
+
+ */
+
+// 1. You can manipulate strings by using assignment operators (+=);
+var greeting = "Hello!";
+console.log(greeting) // => Hello!
+greeting += " My name is Dwayne!"; // this will add and assign this string to the original. 
+console.log(greeting); // => Hello! My name is Dwayne!
+
+// You can also just add different variables together with an operator. ** ACCOUNT FOR SPACES **
+var str1 = "color black";
+var str2 = "That dog";
+var str3 = str2 + " is the " + str1;
+console.log(str3); // "That dog is the color black"
+
+// To avoid having to account for spaces we can use string interpolation
+var str4 = `${str2} is the ${str1}`;
+console.log(str4); // "That dos is the color black"
+
+// 2. String Manipulation via methods
+// There are various built-in methods used to manipulate strings.
+
+// You can use the slice() method to extract a part of a string and returns that extraction into a new string.
+let str = "Apples";
+let lonelyApple = str.slice(0, 5); // starts at the 0 index and ends at the 5th. Takes out the 0 - 5 indexes and puts in new string.
+console.log(lonelyApple); // => Apple
+
+// You can also use the replace() method to replaced a specified value with another value in a string.
+let text = "Thanks for visiting Louisiana!";
+let newText = text.replace("Louisiana", "New Orleans"); // Thanks for Visiting New Orleans!
+
+// You can also use .toUpperCase() or .toLowerCase() to change the case of a string.
+let school = "operation spark";
+console.log(school.toUpperCase()); // => OPERATION SPARK
+
+// You can also turn values that aren't strings into string by using toString();
+let number = 500;
+let numberString = toString(number); // if logged, prints => "500"
+
+// Another string manipulation method is split which turns a string into an array of strings.
+var message = "Hey other words, let's get privacy from each other";
+var isolatedWords = message.split(" ");
+console.log(isolatedWords); // => ["Hey", "other", "words", "let's", "get", "privacy"......]
+
+/**
+ * Control Flow:
+ * 
+ * 0. We can control the flow of an application or code by using conditional if or if-else if-else statements OR *
+ * through the use of a switch statement.
+ * 
+ * 1. Conditional statements allow us to control the flow of our application by direction code
+ * based on conditions that are evaluated to boolean value (true or false). The anatomy of an if - else if - else statement
+ * is
+ *      if(conidition tests for true) {
+ *          do this
+ *      } else if (this condition tests true) {
+ *          do this
+ *      } else { (default statement... if all above test false, we come here
+ *          do this
+ *      }
+ * Starts off with an if statement that tests a condition in parentheses. Inside the curly braces {} is the body
+ * of the statement that is executed if the tested condition is true. 
+ * ** Can have as many else-if statements and then the "else" statement at the end is a default to end the code chain.
+ * 
+ * 2. Switch statements are very similar to else=ifs and can sometimes make for a cleaner code instead of writing out each 
+ * condition separately. 
+ * The switch statement evaluates an input expression, matching the expressions value to a case clause, and executes statements
+ * associated with that case.
+ */
+
+// Example of if - else if - else statement
+var weather = 90;
+    if (weather >= 85) {
+        console.log("It's too hot");
+    } else if (weather >= 70 && weather < 85) {
+        console.log("It feels great outside!");
+    } else if (weather < 70 && weather >= 60) {
+        console.log("It's a bit chilly out");
+    } else {
+        console.log("Let's start up the fireplace");
+    }
+// will log "It's too hot" because the weather, 90 is greater than 85. The code block stops there and doesn't reach
+    // any of the code below the "passed for true" condition.
+
+// Example of Switch Statement
+var color = 'pink';
+switch (color) {
+    case 'orange':
+    case 'red':
+    case 'yellow':
+        console.log('This is a warm color');
+        break; // **** A BREAK statement ends the case, similar to indicate the next step in an else-if chain
+    case 'blue':
+    case 'green':
+    case 'purple':
+        console.log('This is a cool color');
+        break;
+    default: // **** default is like else statement at end of if-else if-else chain.
+        console.log("Sorry, that color isn't in my palette");
+}
+// Since we are checking for pink, the code goes all the way to the last statement since it is not
+    // in any of the case statements. it will print "sorry, that color isnt in my palette"
+
+/**
  * 
  * 
  * 
