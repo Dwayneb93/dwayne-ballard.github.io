@@ -199,3 +199,79 @@ var num2 = 200;
 console.log(num * -Infinity); // prints => -Infinity
 num < num2; // Prints true because negative infinity is smaller than positive infinity. 
 
+/**
+ * Operators:
+ * 
+ * 0. Operators act on our data. Such as assigning them to a variable, comparing them, or performing *
+ * arithmetic operations. Operators are classed by what they do and by how many operands they require *
+ * Operands are the values that the operators act on. 
+ */
+
+// 1. Assignment Operators //
+// By using ONLY an (=) sign, we can assign a value to a variable.
+var firstName = "Dwayne"; // here the = sign assigns firstName a string value of Dwayne
+// You can also simultaneously add and assign something to an already exisiting variable!
+firstName += " Ballard";
+console.log(firstName); // prints => Dwayne Ballard
+
+// Others include -=, /=, *=, %= (remainder); All doing the same thing as += above but in respect to their math (except %).
+
+// 2. Arithmetic Operators //
+// Are operators that take numerical values, either constant expressions or statements, as their operands and return a single value.
+// subtraction (-), addition (+), division (/), muiltiplication (*), remainder (%), exponent (**)
+
+
+// 3. Comparison Operators //
+// A comparison operator compares its operands and returns a logical(boolean) value based on whether the comparison is true.
+
+/*
+    ==       !=            ===                !==               >              >=             <          <=
+  Equal   Not Equal   Strictly Equal   Strictly Not Equal  Greater Than  Greater/Equal to Less Than   Less/equal to
+
+  Strictly/Not Strictly refers to being EXACT SAME/DIFFERENT as in same data type and same value
+*/
+var looseEqual = "10" == 10; // since this is a "loose" equal, it doesn't consider the data types of the string vs number
+
+var strictEqual = "Dwayne" === "dwayne"; // would print false because D does not equal d
+
+var isItBigger = 4 > 2; // if logged, would print true
+
+var lessThanOrEqual = 45 <= 45; // would log true
+
+// 4. Logical Operators //
+// Are used to determine the logic between certain variables, values, statements, etc. They resolve to true or false.
+    // Logical And (&&) Operator will return true if BOTH operands test true, and will return false otherwise.
+    let x = 2;
+    console.log(x < 7 && x > 3); // will return FALSE because 2 is less than 7 but NOT greater than 3
+
+    // Logical Or (||) operator will return true if ONE of the operands test true, and false is neither. 
+    let x = 5;
+    console.log(x > 10 || x <= 5); // will return TRUE because x is equal to 5 and satisfies one condition. 
+
+    // Logical Not (!) or Bang Operator will "flip" the logic of the statement. It will return false if
+        // its operand can be converted to true, otherwise true will return.
+    var logicalNot = "Dwayne" !== "dwayne"; // would return true because D does NOT equal d
+
+// 5. Unary Operators (!, typeOf, -)
+// Is an operation with ONLY ONE operand. Examples include typeOf, delete, 
+var obj = {
+    name: "Dwayne",
+    age: 28
+}
+delete obj.name;
+console.log(obj); // { age: 28 }; This single operand only did one thing. Deleted one item.
+
+// 6. Ternary Operators (1 ? b : c)
+/*  The conditional operator is the ONLY JS operator that takes 3 operands. The operator can have one *
+    two values based on a condition. condition ? val1 : val2;
+*/
+var status = (age >= 18) ? 'adult' : 'minor'; 
+// This statement assigns the value "adult" to the variable status if age i8 or more. Otherwise, it assigns
+    // the value "minor" to status.
+
+/**
+ * String Manipulation
+ * 
+ * 
+ * 
+ */
