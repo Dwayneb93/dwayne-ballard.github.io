@@ -449,3 +449,107 @@ while (countDown >= 0) {
     countDown--;
 }
 // prints => 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
+
+/**
+ * Functions: 
+ * 
+ * 0. Functions allow us to encapsulate a block of code, and execute that block of code whenever we want
+ * and how ever many times we want. Functions take in parameters (inputs) when they are created and they accept
+ * arguments(values) at the time of function call or when you invoke the function. 
+ * 
+ * 1. There are two phases of using functions:
+ *      1. declaration/definition: Is creating the function. You create a function with the function keyword & following structure:
+ *              function name (parameters) {
+ *                  function body
+ *              }
+ *      2. invocation/calling/executing/applying: Is actually using the function.
+ *              name(arguments);
+ * 
+ * 2. A function's parameters are the placeholders for the inputs, and the arguments are the actual inputs we use to call the function, 
+ * after it has been created, in order to use it.
+ * 
+ * 3. The syntax for a NAMED function is as follows:
+ *  var myFunction = function namedFunction() {
+ *      statements
+ *  }
+ * 4. Above, is also how you assign a function to a variable. You declare a variable, and assign it a function.
+ * 
+ * 5. Functions can OPTIONALLY take inputs and OPTIONALLY return a single value 
+This is done via ARROW FUNCTIONS //
+
+Arrow functions don't use the function keyword.
+
+var nameOfFunction = (parameters/inputs) => {
+    function body
+}
+ */
+hello = () => {
+    return "Hello World!";
+}
+hello(); // prints => Hello World!
+
+// 6. Scope //
+/*
+Scope refers to what variables or constants are accessible, where. There is Global and local scope 
+Gobal scope is anything outside of functions, and local scopes are local to the function body. 
+Generally, funcctions enclose a scope and protect their variables from parent scopes, including global. 
+Functions can access the variables in their parent scopes but parent scope CANNOT access variabls in
+child scopes.
+*/
+//Global Scope//
+let a = 1;
+function doSomething() {
+    a = 2;
+}
+console.log(a); // prints 1
+doSomething();
+console.log(a); // prints 2
+// above, a is accessible within the body or scope of doSomething(), and can therefore alter the value a contains.
+
+// Function Scope or Local Scope //
+function doSomething() {
+    var a = 1;
+    console.log(a);
+}
+console.log(a); // throws reference error because a is not defined outside function scope.
+
+// Block Scope //
+if (true) {
+    var a = 1;
+    let b = 2;
+    console.log(a);
+    console.log(b);
+}
+console.log(a); // prints 1, a is NOT block scoped
+console.log(b); // throws ref error, b is not defined.
+// Variables defined with let or const are block scoped. 
+
+// 7. Closures //
+/* Refers to maintaining access to values by enclosing them in function bodies. The function definition forms a closure around
+the environment in which is was defined. This mans the invocation of the function has access to variables of its parent scope.
+Functions form closures aroundd the data they house. If an object returned from the function and is held in memory 
+somewhere(referenced), that closure stays ALIVE, and data can continue to exist in these closures.
+*/
+function makePerson(nameFirst, nameLast) {
+    var friends = [];
+    return {
+        nameFirst: nameFirst,
+        nameLast: nameLast,
+        addFriends: function() {
+            Array.push.apply(friends, Array.slice.call(arguments));
+        },
+        getNumFriends: function() {
+            return friends.length;
+        },
+        getFriendNames: function() {
+            return friends.map(function(friend){
+                return friend.nameFirst + ' ' + friend.nameLast;
+            })
+            .join(", ");
+        }
+    };
+}
+/*
+above, when invoking makePerson(), the inner function definitions of addFriends(), getNumFriends(), getFriendNames() for closures that carry
+with them a reference to the array stored in the friends variable. 
+*/
