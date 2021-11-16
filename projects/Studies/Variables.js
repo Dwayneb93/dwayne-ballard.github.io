@@ -161,3 +161,41 @@ var sampleObject = {
     age: 28,
     hobbies: ["hiking", "riding bike", "video games", "movies"]
 };
+
+// 7. Function //
+/* Is a complex data type that is a set of thatements that peform a task or calculates a value. A function *
+    definition (or function declaration) conists of the function keyword followed by the name of the function, *
+    a list of parameters (input placeholders) that are enclosed in parentheses and separated by commas, and *
+    the code block that will perform the task. The code block is enclosed in curly braces. {}.
+*/
+function sum(x, y) {
+    return x + y;
+}
+sum(5, 6); // prints => 11; This is a function call or how you invoke a function. 
+
+// 8. undefined //
+// Is a primitive data type that has no value or has not been initialized. 
+var favoriteSong;
+console.log(favoriteSong); // prints => undefined
+
+// 9. null //
+// Is a primitive data type that has no value and is intentionally nullified by a programmer. 
+var nonExistent = null;
+
+// 10. NaN //
+// Is a primitive data type that represents not-a-number. 
+var x = 10;
+var y = "yellow";
+console.log(isNaN(x)); // prints => false because x IS a number
+console.log(isNaN(y)); // prints => true because y IS NOT a number
+
+// 11. Infinity and -Infinity //
+/* Is a primitive data type represented as a numeric value. Infinity represents a positive number *
+    greater than no other. -Infinity is a negative number smaller than no other. 
+*/
+var num = 100;
+console.log(num * Infinity); // prints => infinity
+var num2 = 200;
+console.log(num * -Infinity); // prints => -Infinity
+num < num2; // Prints true because negative infinity is smaller than positive infinity. 
+
