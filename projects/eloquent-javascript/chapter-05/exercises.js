@@ -50,16 +50,28 @@ function loop(start, test, update, body) {
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
-
+function every(array, test) {
+for (var element of array) {
+  if (!test(element)) {
+    return false;
+  }
+}
+return true;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
+function dominantDirection(test) {
+  var charactercount = countBy(test, char => {
+    var word = characterScript(char.codePointAt(0));
+    return word ? word.direction : "none";
+  }).filter(name => name != "none");
+  if (charactercount.length == 0) return "ltr";
 
+  return charactercount.reduce(function(accumulator, currentValue) {
+    return accumulator.count > currentValue.count ? accumulator : currentValue}).name;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
